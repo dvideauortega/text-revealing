@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    border: 0;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .slide {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .wrapper {
+    overflow: hidden;
+  }
+  
+  .slide .text {
+    transform: translateY(100%);
+    animation-duration: 0.5s;
+    animation-name: slideOut;
+    animation-fill-mode: forwards;
+    visibility: hidden;
+  }
+  
+  .slide.active .text {
+    animation-duration: 0.5s;
+    animation-name: slideIn;
+    animation-iteration-count: 1;
+    animation-direction: forwards;
+  }
+  
+  .text.visible {
+    visibility:visible;
+  }
+  
+  button {
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    font-size: 1em;
+    padding: 1em;
+    cursor: pointer;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateY(100%);
+    }
+    
+    100% {
+      transform: translateY(0%);
+    }
+  }
+  
+  @keyframes slideOut {
+    0% {
+      transform: translateY(0%);
+    }
+    
+    100% {
+      transform: translateY(-100%);
+    }
+  }
