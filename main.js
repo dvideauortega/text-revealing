@@ -42,43 +42,5 @@ class RevealContainer {
     
 
 }
-/*document.querySelectorAll("[slideLink]").forEach(link => {
-    link.addEventListener("click", (event) => {
-    console.log(event);
-    let nextSlideName = event.target.getAttribute("slideLink");
-    event.target.classList.remove("active");
-    document.querySelector(`.slide[slide='${nextSlideName}']`).classList.add("active");
-})});
-  */
-
-  /*document.querySelectorAll(".text").forEach(text => text.addEventListener("animationend", (e) => {
-    if (!e.target.classList.contains("active"))
-      e.target.classList.remove("visible");
-  }))
-  
-  document.querySelectorAll(".text").forEach(text => text.addEventListener("animationstart", (e) => {
-    if (e.target.classList.contains("active"))
-      e.target.classList.add("visible");
-  }))*/
-
- /* document.querySelectorAll(".slide").forEach(slide => slide.addEventListener("animationend", (e) => {
-    
-    if (!e.target.classList.contains("active")) {
-        e.target.classList.remove("visible");
-    }
-
-    console.log(slide.hasAttribute("xvisible"))
-    if(slide.hasAttribute("xvisible"))
-        .classList.add("active");
-
-  }))
-  
-  document.querySelectorAll(".slide").forEach(slide => slide.addEventListener("animationstart", (e) => {
-    if (e.target.classList.contains("active")) {
-        e.target.classList.add("visible");
-    }
-  }))
-
-  */
 
 new RevealContainer();
