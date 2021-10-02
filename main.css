@@ -15,14 +15,14 @@
     overflow: hidden;
 }
 
-.slide .text {
+.slide .wrapper * {
     transform: translateY(100%);
     animation-duration: 0.5s;
     animation-name: slideOut;
     animation-fill-mode: forwards;
 }
 
-.slide.active .text {
+.slide.active .wrapper * {
     animation-duration: 0.5s;
     animation-name: slideIn;
     animation-iteration-count: 1;
