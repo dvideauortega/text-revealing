@@ -12,16 +12,27 @@
 
 <body>
     <div class="slideContainer">
-        <div class="slide">
+        
+        <div class="slide active visible" slide="first">
             <div class="wrapper">
-                <h1 class="text active visible">Hello world.</h1>
+                <h1 class="text">First slide</h1>
             </div>
             <div class="wrapper">
-                <p class="text active visible">This is getting better...</p>
+                <p class="text" slide-link="second">Go to second slide</p>
             </div>
         </div>
+
+        <div class="slide" slide="second">
+            <div class="wrapper">
+                <h1 class="text">Second slide.</h1>
+            </div>
+            <div class="wrapper">
+                <p class="text" slide-link="first">Go to first slide...</p>
+            </div>
+        </div>
+
     </div>
-    <button>Continue</button>
+    
 </body>
 
 </html>

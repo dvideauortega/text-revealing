@@ -12,6 +12,7 @@
     top: 40%;
     left: 50%;
     transform: translateX(-50%);
+    visibility: hidden;
   }
 
   .wrapper {
@@ -23,7 +24,6 @@
     animation-duration: 0.5s;
     animation-name: slideOut;
     animation-fill-mode: forwards;
-    visibility: hidden;
   }
   
   .slide.active .text {
@@ -33,7 +33,7 @@
     animation-direction: forwards;
   }
   
-  .text.visible {
+  .slide.visible {
     visibility:visible;
   }
   
