@@ -28,9 +28,8 @@ class RevealContainer {
 
         document.querySelectorAll(".slide[slide]").forEach(slide => slide.addEventListener("animationstart", event => {
             let slide = this.#getSlideFromLink(event.target);
-            /*if (!slide.classList.contains("active"))
-                console.log(slide);*/
-            slide.classList.add("visible");
+            if (slide.classList.contains("active"))
+                slide.classList.add("visible");
         }))
     }
 
