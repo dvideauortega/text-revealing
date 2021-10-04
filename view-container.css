@@ -1,0 +1,45 @@
+/* Functionality styles for text appearance effects */
+
+.view {
+    visibility: hidden;
+}
+
+.transition-wrapper {
+    overflow: hidden;
+}
+
+.view .transition-wrapper * {
+    transform: translateY(100%);
+    animation-duration: 0.5s;
+    animation-name: slideOut;
+    animation-fill-mode: forwards;
+}
+
+.view.active .transition-wrapper * {
+    animation-duration: 0.5s;
+    animation-name: slideIn;
+    animation-iteration-count: 1;
+    animation-direction: forwards;
+}
+
+.view.visible {
+    visibility: visible;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
