@@ -11,53 +11,55 @@
 </head>
 
 <body>
-    <div class="slide active visible" slide="first">
-        <div class="wrapper">
-            <h1>First slide</h1>
-        </div>
-        <div class="wrapper">
-            <p slide-link="second">Go to second slide</p>
-        </div>
-        <div class="wrapper">
-            <p slide-link="third">Go to third slide</p>
-        </div>
-        <div class="wrapper">
-            <div>
-                <p>This is a text inside a container</p>
-                <p>Putting a div inside the wrapper to hold the content</p>
-                <p>Makes the content behave as one unit.</p>
+    <div class="view-container">
+
+        <div class="active visible view" data-view-name="first">
+            <div class="transition-wrapper">
+                <div>
+                    <h2>First section</h2>
+                    <p>This is the first example section...</p>
+                </div>
+            </div>
+            <div class="transition-wrapper">
+                <p data-view-link-to="second">Go to second slide</p>
+            </div>
+            <div class="transition-wrapper">
+                <p data-view-link-to="third">Go to third slide</p>
             </div>
         </div>
+
+        <div class="view" data-view-name="second">
+            <div class="transition-wrapper">
+                <div>
+                    <h2>First section</h2>
+                    <p>This is the first example section...</p>
+                </div>
+            </div>
+            <div class="transition-wrapper">
+                <div>
+                    <p data-view-link-to="first">Go to first slide</p>
+                    <p data-view-link-to="third">Go to third slide</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="view" data-view-name="third">
+            <div class="transition-wrapper">
+                <h2>Third section</h2>
+            </div>
+            <div class="transition-wrapper">
+                <p>This is the third example section...</p>
+            </div>
+            <div class="transition-wrapper">
+                <p data-view-link-to="first">Go to first slide</p>
+            </div>
+            <div class="transition-wrapper">
+                    <p data-view-link-to="second">Go to second slide</p>
+            </div>
+        </div>
+
     </div>
-
-    <div class="slide" slide="second">
-        <div class="wrapper">
-            <h1>Second slide.</h1>
-        </div>
-        <div class="wrapper">
-            <p slide-link="first">Go to first slide...</p>
-        </div>
-        <div class="wrapper">
-            <p slide-link="third">Go to third slide...</p>
-        </div>
-    </div>
-
-    <div class="slide" slide="third">
-        <div class="wrapper">
-            <h1>Third slide.</h1>
-        </div>
-        <div class="wrapper">
-            <p slide-link="first">Go to first slide...</p>
-        </div>
-        <div class="wrapper">
-            <p slide-link="second">Go to second slide...</p>
-        </div>
-        <div class="wrapper">
-            <img src="pexels-david-gierth-3958647.jpg" style="max-width:250px" alt="">
-        </div>
-    </div>
-
-
+    
 </body>
 
 </html>

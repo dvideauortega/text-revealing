@@ -10,29 +10,29 @@
 
 /* Functionality styles for text appearance effects */
 
-.slide {
+.view {
     visibility: hidden;
 }
 
-.wrapper {
+.transition-wrapper {
     overflow: hidden;
 }
 
-.slide .wrapper * {
+.view .transition-wrapper * {
     transform: translateY(100%);
     animation-duration: 0.5s;
     animation-name: slideOut;
     animation-fill-mode: forwards;
 }
 
-.slide.active .wrapper * {
+.view.active .transition-wrapper * {
     animation-duration: 0.5s;
     animation-name: slideIn;
     animation-iteration-count: 1;
     animation-direction: forwards;
 }
 
-.slide.visible {
+.view.visible {
     visibility: visible;
 }
 
