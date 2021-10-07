@@ -11,6 +11,9 @@ class ViewContainer {
             LINK_SELECTOR: "[data-view-link-to]",
             LINK_ATTRIBUTE_NAME: "data-view-link-to",
             DEFAULT_VIEW_ATTRIBUTE_NAME: "data-default-activated-view"
+        },
+        transitionSettings: {
+            DELAYED_TRANSITION: false
         }
     }
 
@@ -48,9 +51,11 @@ class ViewContainer {
     }
 
     #setupAnimationEnd(view) {
-        view.addEventListener("animationend", () =>
+        view.addEventListener("animationend", () => {
             !view.classList.contains("active") ? view.classList.remove("visible") : null
-        )
+            if (this.#settings.transitionSettings.DELAYED_TRANSITION)
+                this.#currentActivatedView.classList.add("active");
+        })
     }
 
     #setupLinks(view) {
@@ -70,7 +75,8 @@ class ViewContainer {
         if (this.#currentActivatedView && this.#currentActivatedView != view)
             this.#currentActivatedView.classList.remove("active");
         this.#currentActivatedView = view;
-        view.classList.add("active");
+        if (!this.#settings.transitionSettings.DELAYED_TRANSITION)
+            view.classList.add("active");
     }
 
     activateViewByName(viewName) {
