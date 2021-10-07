@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+/* TODO: delete this */
+.view {
+    position: absolute;
+}
 
 /* Functionality styles for text appearance effects */
 

@@ -48,9 +48,10 @@ class ViewContainer {
     }
 
     #setupAnimationEnd(view) {
-        view.addEventListener("animationend", () =>
+        view.addEventListener("animationend", () => {
             !view.classList.contains("active") ? view.classList.remove("visible") : null
-        )
+            this.#currentActivatedView.classList.add("active");
+        })
     }
 
     #setupLinks(view) {
@@ -70,7 +71,7 @@ class ViewContainer {
         if (this.#currentActivatedView && this.#currentActivatedView != view)
             this.#currentActivatedView.classList.remove("active");
         this.#currentActivatedView = view;
-        view.classList.add("active");
+        //view.classList.add("active");
     }
 
     activateViewByName(viewName) {
