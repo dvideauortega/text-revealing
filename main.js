@@ -13,7 +13,7 @@ class ViewContainer {
             DEFAULT_VIEW_ATTRIBUTE_NAME: "data-default-activated-view"
         },
         transitionSettings: {
-            DELAYED_TRANSITION: false
+            DELAYED_TRANSITION: true
         }
     }
 

@@ -21,13 +21,13 @@
 }
 
 .view .transition-wrapper * {
-    animation-duration: 0.25s;
+    animation-duration: 0.3s;
     animation-name: slideUp;
     animation-fill-mode: forwards;
 }
 
 .view.active .transition-wrapper * {
-    animation-duration: 0.25s;
+    animation-duration: 0.3s;
     animation-name: slideFromBottom;
     animation-iteration-count: 1;
     animation-direction: forwards;
