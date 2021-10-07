@@ -16,37 +16,37 @@
     <div class="menu-icon">Open menu</div>
     <div class="view-container menu">
 
-        <div class="active visible view" data-view-name="first">
+        <div class="view" data-default-activated-view data-view-name="first">
             <div class="transition-wrapper">
-                <div class="view-title">
-                    <h2>First section</h2>
-                    <p>This is the first example section...</p>
-                </div>
+                <h2>First section</h2>
+            </div>
+            <div class="transition-wrapper">
+                <p>This is the first example section...</p>
             </div>
             <div class="transition-wrapper">
                 <p data-view-link-to="second">Go to second slide</p>
             </div>
             <div class="transition-wrapper">
-                <p data-view-link-to="third">Go to third slide</p>
-            </div>
-        </div>
-
-        <div class="view" data-view-name="second">
-            <div class="transition-wrapper">
-                <div class="view-title">
-                    <h2>Second section</h2>
-                    <p>This is the second example section...</p>
-                </div>
-            </div>
-            <div class="transition-wrapper">
-                <div>
-                    <p data-view-link-to="first">Go to first slide</p>
                     <p data-view-link-to="third">Go to third slide</p>
-                </div>
             </div>
         </div>
 
-        <div class="view" data-view-name="third">
+        <div class="view" data-default-activated-view data-view-name="second">
+            <div class="transition-wrapper">
+                <h2>Second section</h2>
+            </div>
+            <div class="transition-wrapper">
+                <p>This is the second example section...</p>
+            </div>
+            <div class="transition-wrapper">
+                <p data-view-link-to="first">Go to first slide</p>
+            </div>
+            <div class="transition-wrapper">
+                    <p data-view-link-to="third">Go to third slide</p>
+            </div>
+        </div>
+
+        <div class="view" data-default-activated-view data-view-name="third">
             <div class="transition-wrapper">
                 <div class="view-title">
                     <h2>Third section</h2>

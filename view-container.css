@@ -1,23 +1,29 @@
-/* Functionality styles for text appearance effects */
-
 .view {
-    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding: 1em;
 }
 
-.transition-wrapper {
-    overflow: hidden;
+.view-title * {
+    color: #e74c3c;
+}
+
+[data-view-link-to] {
+    cursor: pointer;
 }
 
 .view .transition-wrapper * {
-    transform: translateY(100%);
     animation-duration: 0.5s;
-    animation-name: slideOut;
+    animation-name: slideUp;
     animation-fill-mode: forwards;
 }
 
 .view.active .transition-wrapper * {
     animation-duration: 0.5s;
-    animation-name: slideIn;
+    animation-name: slideFromBottom;
     animation-iteration-count: 1;
     animation-direction: forwards;
 }
@@ -26,7 +32,11 @@
     visibility: visible;
 }
 
-@keyframes slideIn {
+[data-view-link-to] {
+    cursor: pointer;
+}
+
+@keyframes slideFromBottom {
     0% {
         transform: translateY(100%);
     }
@@ -35,11 +45,47 @@
     }
 }
 
-@keyframes slideOut {
+@keyframes slideUp {
     0% {
         transform: translateY(0%);
     }
     100% {
         transform: translateY(-100%);
+    }
+}
+
+@keyframes slideFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
