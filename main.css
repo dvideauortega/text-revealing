@@ -87,24 +87,3 @@
         opacity: 0;
     }
 }
-
-/* TODO: delete this */
-
-.mega-container {
-    background-color: gold;
-    width: 100vw;
-    max-width: 1200px;
-    transition: height ease-in-out 200ms;
-    overflow: hidden;
-}
-
-.mega-container .view {
-    position: absolute;
-    width: 100%;
-}
-
-[data-view-link-to] {
-    padding: 1em;
-}
-
-
