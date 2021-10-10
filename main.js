@@ -14,7 +14,7 @@ class ViewContainer {
         },
         transitionSettings: {
             DELAYED_TRANSITION: true,
-            VARIABLE_HEIGHT_CONTAINER: true
+            VARIABLE_HEIGHT_CONTAINER: false
         }
     }
 
@@ -47,9 +47,10 @@ class ViewContainer {
     }
 
     #setupContainerHeight() {
-        // CHECK!
         this.#container.style.height = `${this.#currentActivatedView.offsetHeight}px`;
-        // ENDCHECK!
+        this.#container.addEventListener("viewChange", event => 
+            event.target.style.height = `${event.detail.newActiveView.offsetHeight}px`
+        )
     }
 
     #setupAnimationStart(view) {
@@ -106,6 +107,3 @@ class ViewContainer {
 }
 
 const container = new ViewContainer(document.querySelector(".view-container"));
-container.getContainer().addEventListener("viewChange", (event) => {
-    event.target.style.height = `${event.detail.newActiveView.offsetHeight}px`;
-})
