@@ -1,18 +1,9 @@
-* {
-    box-sizing: border-box;
-    font-family: "Montserrat", sans-serif;
-    border: 0;
-    outline: 0;
-    margin: 0;
-    padding: 0;
-}
-
-/* TODO: delete this */
-.view {
-    position: absolute;
-}
-
 /* Functionality styles for text appearance effects */
+
+.view-container * {
+    padding: 0;
+    margin: 0;
+}
 
 .view {
     visibility: hidden;
@@ -24,13 +15,13 @@
 
 .view .transition-wrapper * {
     animation-duration: 0.25s;
-    animation-name: slideRight;
+    animation-name: slideUp;
     animation-fill-mode: forwards;
 }
 
 .view.active .transition-wrapper * {
     animation-duration: 0.25s;
-    animation-name: slideFromLeft;
+    animation-name: slideFromBottom;
     animation-iteration-count: 1;
     animation-direction: forwards;
 }
@@ -96,3 +87,24 @@
         opacity: 0;
     }
 }
+
+/* TODO: delete this */
+
+.mega-container {
+    background-color: gold;
+    width: 100vw;
+    max-width: 1200px;
+    transition: height ease-in-out 200ms;
+    overflow: hidden;
+}
+
+.mega-container .view {
+    position: absolute;
+    width: 100%;
+}
+
+[data-view-link-to] {
+    padding: 1em;
+}
+
+

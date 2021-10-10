@@ -13,7 +13,8 @@ class ViewContainer {
             DEFAULT_VIEW_ATTRIBUTE_NAME: "data-default-activated-view"
         },
         transitionSettings: {
-            DELAYED_TRANSITION: false
+            DELAYED_TRANSITION: true,
+            VARIABLE_HEIGHT_CONTAINER: true
         }
     }
 
@@ -41,11 +42,18 @@ class ViewContainer {
             this.#setupAnimationEnd(view);
             this.#setupLinks(view);
             !this.#currentActivatedView && view.hasAttribute(this.#settings.selectors.DEFAULT_VIEW_ATTRIBUTE_NAME) ? this.activateView(view) : null;
+            this.#settings.transitionSettings.VARIABLE_HEIGHT_CONTAINER ? this.#setupContainerHeight() : null;
         });
     }
 
+    #setupContainerHeight() {
+        // CHECK!
+        this.#container.style.height = `${this.#currentActivatedView.offsetHeight}px`;
+        // ENDCHECK!
+    }
+
     #setupAnimationStart(view) {
-        view.addEventListener("animationstart", () => 
+        view.addEventListener("animationstart", () =>
             view.classList.contains("active") ? view.classList.add("visible") : null
         );
     }
@@ -72,11 +80,14 @@ class ViewContainer {
     }
 
     activateView(view) {
+        const viewChangeEvent = new CustomEvent("viewChange", { detail: { lastActiveView: this.#currentActivatedView, newActiveView: view }});
+
         if (this.#currentActivatedView && this.#currentActivatedView != view)
             this.#currentActivatedView.classList.remove("active");
         this.#currentActivatedView = view;
         if (!this.#settings.transitionSettings.DELAYED_TRANSITION)
             view.classList.add("active");
+        this.#container.dispatchEvent(viewChangeEvent);
     }
 
     activateViewByName(viewName) {
@@ -84,6 +95,17 @@ class ViewContainer {
         this.activateView(view);
     }
 
+    getActiveView() {
+        return this.#currentActivatedView;
+    }
+
+    getContainer() {
+        return this.#container;
+    }
+
 }
 
-new ViewContainer(document.querySelector(".view-container"));
+const container = new ViewContainer(document.querySelector(".view-container"));
+container.getContainer().addEventListener("viewChange", (event) => {
+    event.target.style.height = `${event.detail.newActiveView.offsetHeight}px`;
+})
