@@ -10,12 +10,13 @@
 }
 
 .transition-wrapper {
+    display: inline-block;
     overflow: hidden;
 }
 
 .view .transition-wrapper * {
     animation-duration: 0.25s;
-    animation-name: slideUp;
+    animation-name: slideRight;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     margin: 0;
@@ -23,7 +24,7 @@
 
 .view.active .transition-wrapper * {
     animation-duration: 0.25s;
-    animation-name: slideFromBottom;
+    animation-name: slideFromLeft;
     animation-iteration-count: 1;
     animation-direction: forwards;
 }

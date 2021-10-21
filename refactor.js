@@ -2,33 +2,27 @@ class View {
 
     #domElement = null;
     #isActive = false;
-    #hideEvent = new CustomEvent("hide");
 
     constructor(domElement, activeByDefault = false) {
         this.#domElement = domElement;
         this.#isActive = activeByDefault;
-        this.#setupAnimationStart();
         this.#setupAnimationEnd();
-    }
-
-    #setupAnimationStart() {
-        this.#domElement.addEventListener("animationstart", () => {
-            if (!this.#isActive) this.#domElement.classList.add("visible");
-        })
     }
 
     #setupAnimationEnd() {
         this.#domElement.addEventListener("animationend", () => {
-            if (this.#isActive) this.#domElement.classList.remove("visible");
-            this.#isActive = !this.#isActive;
+            !this.#isActive ? this.#domElement.classList.remove("visible") : null;
         })
     }
 
     activate() {
+        this.#isActive = true;
+        this.#domElement.classList.add("visible");
         this.#domElement.classList.add("active");
     }
 
     deactivate() {
+        this.#isActive = false;
         this.#domElement.classList.remove("active");
     }
 
@@ -38,13 +32,17 @@ class View {
 
 }
 
-const domElement = document.querySelector(".view");
+const domElement = document.querySelector(".view[data-view-name='one']");
+const domElement2 = document.querySelector(".view[data-view-name='two']");
 const view = new View(domElement);
-view.activate()
+const view2 = new View(domElement2);
+view.activate();
 document.querySelector(".testbtn").addEventListener("click", () => {
     if (view.isActive) {
-        view.deactivate()
+        view.deactivate();
+        view2.activate();
     } else {
+        view2.deactivate();
         view.activate();
     }
 })
