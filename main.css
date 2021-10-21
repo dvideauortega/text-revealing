@@ -16,6 +16,7 @@
 .view .transition-wrapper * {
     animation-duration: 0.25s;
     animation-name: slideUp;
+    animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
 
