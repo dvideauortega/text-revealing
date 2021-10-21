@@ -18,6 +18,7 @@
     animation-name: slideUp;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+    margin: 0;
 }
 
 .view.active .transition-wrapper * {
