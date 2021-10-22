@@ -14,7 +14,7 @@
     overflow: hidden;
 }
 
-.view .transition-wrapper * {
+/*.view .transition-wrapper * {
     animation-duration: 0.25s;
     animation-name: slideRight;
     animation-iteration-count: 1;
@@ -27,7 +27,7 @@
     animation-name: slideFromLeft;
     animation-iteration-count: 1;
     animation-direction: forwards;
-}
+}*/
 
 .view.visible {
     visibility: visible;
