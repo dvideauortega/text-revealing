@@ -48,6 +48,10 @@ class LinkedListView extends View {
         return this.#previousView;
     }
 
+    set previous(previousView) {
+        this.#previousView = previousView;
+    }
+
     get next() {
         return this.#nextView;
     }
@@ -69,6 +73,10 @@ const secondView = new LinkedListView(secondDomElement);
 const thirdView = new LinkedListView(thirdDomElement);
 const fourthView = new LinkedListView(fourthDomElement);
 
+firstView.previous = fourthView;
+secondView.previous = firstView;
+thirdView.previous = secondView;
+fourthView.previous = thirdView;
 firstView.next = secondView;
 secondView.next = thirdView;
 thirdView.next = fourthView;
@@ -77,7 +85,13 @@ fourthView.next = firstView;
 let currentView = firstView;
 currentView.activate();
 
-document.querySelector(".testbtn").addEventListener("click", () => {
+document.querySelector(".previous").addEventListener("click", () => {
+    currentView.deactivate();
+    currentView.previous.activate();
+    currentView = currentView.previous;
+})
+
+document.querySelector(".next").addEventListener("click", () => {
     currentView.deactivate();
     currentView.next.activate();
     currentView = currentView.next;
