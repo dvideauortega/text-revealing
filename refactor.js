@@ -3,9 +3,9 @@ class View {
     #domElement = null;
     #isActive = false;
 
-    constructor(domElement, activeByDefault = false) {
+    constructor(domElement) {
         this.#domElement = domElement;
-        this.#isActive = activeByDefault;
+        this.#isActive = false;
         this.#setupAnimationEnd();
     }
 
@@ -31,6 +31,10 @@ class View {
         return this.#isActive;
     }
 
+    get domElement() {
+        return this.#domElement;
+    }
+
 }
 
 class LinkedListView extends View {
@@ -38,8 +42,8 @@ class LinkedListView extends View {
     #previousView = null;
     #nextView = null;
 
-    constructor(domElement, previousView, nextView, activeByDefault = false) {
-        super(domElement, activeByDefault);
+    constructor(domElement, previousView, nextView) {
+        super(domElement);
         this.#previousView = previousView;
         this.#nextView = nextView;
     }
@@ -62,37 +66,56 @@ class LinkedListView extends View {
 
 }
 
-const firstDomElement = document.querySelector(".view[data-view-name='one']");
-const secondDomElement = document.querySelector(".view[data-view-name='two']");
-const thirdDomElement = document.querySelector(".view[data-view-name='three']");
-const fourthDomElement = document.querySelector(".view[data-view-name='four']");
+class LinkedListContainer {
+    
+    #domElement = null;
+    #views = {};
+    #current = null;
 
-console.log(firstDomElement, secondDomElement, thirdDomElement, fourthDomElement);
-const firstView = new LinkedListView(firstDomElement);
-const secondView = new LinkedListView(secondDomElement);
-const thirdView = new LinkedListView(thirdDomElement);
-const fourthView = new LinkedListView(fourthDomElement);
+    constructor(domElement) {
+        this.#domElement = domElement;
+        this.#detectViews();
+    }
 
-firstView.previous = fourthView;
-secondView.previous = firstView;
-thirdView.previous = secondView;
-fourthView.previous = thirdView;
-firstView.next = secondView;
-secondView.next = thirdView;
-thirdView.next = fourthView;
-fourthView.next = firstView;
+    #detectViews() {
+        
+        // Building views object with names
+        this.#domElement.querySelectorAll(".view").forEach(viewDomElement => {
+            let viewName = viewDomElement.getAttribute("data-view");
+            this.#views[viewName] = new LinkedListView(viewDomElement);
+        });
+        
+        // Building relationships between views
+        Object.keys(this.#views).forEach(viewName => {
+            const viewObject = this.#views[viewName];
+            const previousViewName = viewObject.domElement.getAttribute("data-previous-view");
+            const nextViewName = viewObject.domElement.getAttribute("data-next-view");
+            viewObject.previous = this.#views[previousViewName];
+            viewObject.next = this.#views[nextViewName];
+        })
 
-let currentView = firstView;
-currentView.activate();
+        // Activate first view
+        const firstViewName = Object.keys(this.#views)[0];
+        this.#current = this.#views[firstViewName];
+        this.#current.activate();
 
-document.querySelector(".previous").addEventListener("click", () => {
-    currentView.deactivate();
-    currentView.previous.activate();
-    currentView = currentView.previous;
-})
+    }
 
-document.querySelector(".next").addEventListener("click", () => {
-    currentView.deactivate();
-    currentView.next.activate();
-    currentView = currentView.next;
-})
+    next() {
+        this.#current.deactivate();
+        this.#current.next.activate();
+        this.#current = this.#current.next;
+    }
+
+    previous() {
+        this.#current.deactivate();
+        this.#current.previous.activate();
+        this.#current = this.#current.previous;
+    }
+
+}
+
+const containerDomElement = document.querySelector(".view-container");
+const linkedViewContainer = new LinkedListContainer(containerDomElement);
+document.querySelector(".previous").addEventListener("click", () => linkedViewContainer.previous());
+document.querySelector(".next").addEventListener("click", () => linkedViewContainer.next());

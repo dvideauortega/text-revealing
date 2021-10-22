@@ -12,29 +12,31 @@
 </head>
 
 <body>
-<div class="view" data-view-name="one">
-    <div class="transition-wrapper">
-        <h1>First view</h1>
+    <div class="view-container">
+        <div class="view" data-view="one" data-previous-view="four" data-next-view="two">
+            <div class="transition-wrapper">
+                <h1>First view</h1>
+            </div>
+        </div>
+        <div class="view" data-view="two" data-previous-view="one" data-next-view="three">
+            <div class="transition-wrapper">
+                <h1>Second view</h1>
+            </div>
+        </div>
+        <div class="view" data-view="three" data-previous-view="two" data-next-view="four">
+            <div class="transition-wrapper">
+                <h1>Third view</h1>
+            </div>
+        </div>
+        <div class="view" data-view="four" data-previous-view="three" data-next-view="one">
+            <div class="transition-wrapper">
+                <h1>Fourth view</h1>
+            </div>
+        </div>
     </div>
-</div>
-<div class="view" data-view-name="two">
-    <div class="transition-wrapper">
-        <h1>Second view</h1>
-    </div>
-</div>
-<div class="view" data-view-name="three">
-    <div class="transition-wrapper">
-        <h1>Third view</h1>
-    </div>
-</div>
-<div class="view" data-view-name="four">
-    <div class="transition-wrapper">
-        <h1>Fourth view</h1>
-    </div>
-</div>
-    
-<button class="previous">Previous view</button>
-<button class="next">Next view</button>
+        
+    <button class="previous">Previous view</button>
+    <button class="next">Next view</button>
 </body>
 
 </html>
